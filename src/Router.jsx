@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
+import JobList from "./pages/JobList";
 
 const routes = [
     {
@@ -7,7 +8,8 @@ const routes = [
         element: <App />,
         children: [
             {
-
+                path: "",
+                element: <JobList />
             }
         ]
     }
