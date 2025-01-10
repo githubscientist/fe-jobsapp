@@ -33,6 +33,16 @@ const Layout = ({ children }) => {
                             </>
                         )
                     }
+                    {
+                        user && user.role === 'admin' && (
+                            <>
+                                <Link to="/admin/dashboard" className="mr-4">Dashboard</Link>
+                                <Link to="/admin/manage-recruiters" className="mr-4">Manage Recruiters</Link>
+                                <Link to="/admin/manage-companies" className="mr-4">Manage Companies</Link>
+                                <Link to="/admin/assign-recruiter" className="mr-4">Assign Recruiter</Link>
+                            </>
+                        )
+                    }
                 </div>
 
                 <div>
