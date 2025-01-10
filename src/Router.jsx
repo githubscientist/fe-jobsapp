@@ -3,16 +3,21 @@ import App from "./App";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import authLoader from "./loaders/unit/authLoader";
+import Logout from "./components/Logout";
 
 const routes = [
     {
         path: "/",
         element: <App />,
+        loader: authLoader,
         children: [
             { path: "", element: <Home /> },
             { path: "register", element: <Register /> },
-            { path: "login", element: <Login /> }
-        ]
+            { path: "login", element: <Login /> },
+            { path: "logout", element: <Logout /> }
+        ],
+        hydrateFallbackElement: <p>Loading...</p>
     }
 ];
 

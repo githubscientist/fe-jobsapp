@@ -3,6 +3,7 @@ import { selectEmail, selectPassword, setEmail, setPassword } from "../redux/fea
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import authServices from "../services/authServices";
+import { setUser } from "../redux/features/auth/userSlice";
 
 const Login = () => {
 
@@ -21,13 +22,17 @@ const Login = () => {
             if (response.status === 200) {
                 toast.success('Logged in successfully');
 
+                // call the authLoader to get the user data
+                const response = await authServices.me();
+                dispatch(setUser(response.data));
+
                 // clear the form
                 dispatch(setEmail(''));
                 dispatch(setPassword(''));
 
                 // redirect to home page
                 setTimeout(() => {
-                    navigate('/');
+                    navigate('/', { replace: true });
                 }, 500);
             }
         } catch (error) {
